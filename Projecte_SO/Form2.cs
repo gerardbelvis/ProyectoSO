@@ -29,7 +29,7 @@ namespace Projecte_SO
 
             else
             {
-                IPAddress direc = IPAddress.Parse("192.168.56.101");
+                IPAddress direc = IPAddress.Parse("192.168.56.102");
                 IPEndPoint ipep = new IPEndPoint(direc, 9070);
 
                 server = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
@@ -37,17 +37,19 @@ namespace Projecte_SO
                 {
                     server.Connect(ipep);
 
-                    //PONGO EN MARCHA EL THREAD AQUI PORQUE TIENE QUE RECIBIR UNA RESPUESTA DEL SERVIDOR ANTES DE CONECTARSE A EL
-                    //el thread que atenderá los mensajes del servidor
-                    //ThreadStart ts = delegate { AtenderServidor(); };
-                    //atender = new Thread(ts);
-                    //atender.Start();
-
-
-                    string mensaje = "5/" + usuari.Text + "," + contra.Text + "," + repetircontra.Text;
+                    string mensaje = "5/" + usuari.Text + "/" + contra.Text + "/" + repetircontra.Text;
 
                     byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
                     server.Send(msg);
+
+                    byte[] msg2 = new byte[80];
+                    server.Receive(msg2);
+                    mensaje = Encoding.ASCII.GetString(msg2).Split('\0')[0];
+                    if (mensaje == "0")
+                        MessageBox.Show("Usuari creat correctament");
+                    else
+                        MessageBox.Show("Error creant l'usuari");
+                    Close();
                 }
 
                 catch (SocketException)
@@ -62,6 +64,24 @@ namespace Projecte_SO
                     MessageBox.Show("Error. No he podido conectar con servidor");
                 }
             }
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox1.Checked)
+
+                this.contra.PasswordChar = '\0';
+            else
+                this.contra.PasswordChar = '*';
+        }
+
+        private void checkBox2_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox2.Checked)
+
+                this.repetircontra.PasswordChar = '\0';
+            else
+                this.repetircontra.PasswordChar = '*';
         }
     }
 }

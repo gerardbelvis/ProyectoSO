@@ -45,6 +45,12 @@
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.comboBox3 = new System.Windows.Forms.ComboBox();
             this.comboBox4 = new System.Windows.Forms.ComboBox();
+            this.button3 = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
+            this.dameConButton = new System.Windows.Forms.Button();
+            this.conectadosGrid = new System.Windows.Forms.DataGridView();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            ((System.ComponentModel.ISupportInitialize)(this.conectadosGrid)).BeginInit();
             this.SuspendLayout();
             // 
             // textBox1
@@ -67,6 +73,7 @@
             // 
             this.textBox2.Location = new System.Drawing.Point(189, 148);
             this.textBox2.Name = "textBox2";
+            this.textBox2.PasswordChar = '*';
             this.textBox2.Size = new System.Drawing.Size(135, 22);
             this.textBox2.TabIndex = 2;
             // 
@@ -81,9 +88,9 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(410, 113);
+            this.button1.Location = new System.Drawing.Point(410, 92);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(121, 34);
+            this.button1.Size = new System.Drawing.Size(133, 34);
             this.button1.TabIndex = 4;
             this.button1.Text = "CONNECTAR";
             this.button1.UseVisualStyleBackColor = true;
@@ -97,7 +104,6 @@
             this.label3.Size = new System.Drawing.Size(214, 17);
             this.label3.TabIndex = 5;
             this.label3.Text = "QUINA CONSULTA VOLS FER ?";
-            this.label3.Visible = false;
             // 
             // radioButton1
             // 
@@ -109,7 +115,6 @@
             this.radioButton1.TabStop = true;
             this.radioButton1.Text = "Durada de la partida en la que hi ha hagut més morts";
             this.radioButton1.UseVisualStyleBackColor = true;
-            this.radioButton1.Visible = false;
             // 
             // radioButton2
             // 
@@ -121,7 +126,6 @@
             this.radioButton2.TabStop = true;
             this.radioButton2.Text = "Quants cops ha mort el jugador";
             this.radioButton2.UseVisualStyleBackColor = true;
-            this.radioButton2.Visible = false;
             // 
             // radioButton3
             // 
@@ -133,7 +137,6 @@
             this.radioButton3.TabStop = true;
             this.radioButton3.Text = "Cops que s\'ha escollit el personatge";
             this.radioButton3.UseVisualStyleBackColor = true;
-            this.radioButton3.Visible = false;
             // 
             // label4
             // 
@@ -143,7 +146,6 @@
             this.label4.Size = new System.Drawing.Size(79, 17);
             this.label4.TabIndex = 10;
             this.label4.Text = "a la partida";
-            this.label4.Visible = false;
             // 
             // label5
             // 
@@ -153,7 +155,6 @@
             this.label5.Size = new System.Drawing.Size(42, 17);
             this.label5.TabIndex = 13;
             this.label5.Text = "el dia";
-            this.label5.Visible = false;
             // 
             // button2
             // 
@@ -163,7 +164,6 @@
             this.button2.TabIndex = 15;
             this.button2.Text = "FER LA CONSULTA";
             this.button2.UseVisualStyleBackColor = true;
-            this.button2.Visible = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // linkLabel1
@@ -180,44 +180,116 @@
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "Juan",
+            "Maria",
+            "Gerard",
+            "Pol",
+            "Julia"});
             this.comboBox1.Location = new System.Drawing.Point(271, 386);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(121, 24);
             this.comboBox1.TabIndex = 17;
-            this.comboBox1.Visible = false;
             // 
             // comboBox2
             // 
             this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Items.AddRange(new object[] {
+            "1",
+            "2",
+            "3",
+            "4",
+            "5"});
             this.comboBox2.Location = new System.Drawing.Point(492, 388);
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(121, 24);
             this.comboBox2.TabIndex = 18;
-            this.comboBox2.Visible = false;
             // 
             // comboBox3
             // 
             this.comboBox3.FormattingEnabled = true;
+            this.comboBox3.Items.AddRange(new object[] {
+            "Lenin",
+            "Jruschov",
+            "Stalin",
+            "Malenkov",
+            "Grobachov"});
             this.comboBox3.Location = new System.Drawing.Point(295, 464);
             this.comboBox3.Name = "comboBox3";
             this.comboBox3.Size = new System.Drawing.Size(121, 24);
             this.comboBox3.TabIndex = 19;
-            this.comboBox3.Visible = false;
             // 
             // comboBox4
             // 
             this.comboBox4.FormattingEnabled = true;
+            this.comboBox4.Items.AddRange(new object[] {
+            "10-02-2019",
+            "12-02-2019",
+            "16-02-2019"});
             this.comboBox4.Location = new System.Drawing.Point(470, 465);
             this.comboBox4.Name = "comboBox4";
             this.comboBox4.Size = new System.Drawing.Size(121, 24);
             this.comboBox4.TabIndex = 20;
-            this.comboBox4.Visible = false;
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(410, 142);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(133, 34);
+            this.button3.TabIndex = 21;
+            this.button3.Text = "DESCONNECTAR";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(81, 658);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(134, 17);
+            this.label6.TabIndex = 22;
+            this.label6.Text = "Llista de connectats";
+            // 
+            // dameConButton
+            // 
+            this.dameConButton.Location = new System.Drawing.Point(65, 696);
+            this.dameConButton.Name = "dameConButton";
+            this.dameConButton.Size = new System.Drawing.Size(164, 40);
+            this.dameConButton.TabIndex = 23;
+            this.dameConButton.Text = "DAME CONECTADOS";
+            this.dameConButton.UseVisualStyleBackColor = true;
+            this.dameConButton.Click += new System.EventHandler(this.dameConButton_Click);
+            // 
+            // conectadosGrid
+            // 
+            this.conectadosGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.conectadosGrid.Location = new System.Drawing.Point(25, 755);
+            this.conectadosGrid.Name = "conectadosGrid";
+            this.conectadosGrid.RowTemplate.Height = 24;
+            this.conectadosGrid.Size = new System.Drawing.Size(240, 271);
+            this.conectadosGrid.TabIndex = 24;
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(323, 182);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(78, 21);
+            this.checkBox1.TabIndex = 25;
+            this.checkBox1.Text = "Mostrar";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(684, 661);
+            this.ClientSize = new System.Drawing.Size(1382, 1055);
+            this.Controls.Add(this.checkBox1);
+            this.Controls.Add(this.conectadosGrid);
+            this.Controls.Add(this.dameConButton);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.button3);
             this.Controls.Add(this.comboBox4);
             this.Controls.Add(this.comboBox3);
             this.Controls.Add(this.comboBox2);
@@ -237,6 +309,7 @@
             this.Controls.Add(this.textBox1);
             this.Name = "Form1";
             this.Text = "Form1";
+            ((System.ComponentModel.ISupportInitialize)(this.conectadosGrid)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -261,6 +334,11 @@
         private System.Windows.Forms.ComboBox comboBox2;
         private System.Windows.Forms.ComboBox comboBox3;
         private System.Windows.Forms.ComboBox comboBox4;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Button dameConButton;
+        private System.Windows.Forms.DataGridView conectadosGrid;
+        private System.Windows.Forms.CheckBox checkBox1;
     }
 }
 

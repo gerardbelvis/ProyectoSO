@@ -37,17 +37,19 @@ namespace Projecte_SO
                 {
                     server.Connect(ipep);
 
-                    //PONGO EN MARCHA EL THREAD AQUI PORQUE TIENE QUE RECIBIR UNA RESPUESTA DEL SERVIDOR ANTES DE CONECTARSE A EL
-                    //el thread que atenderá los mensajes del servidor
-                    //ThreadStart ts = delegate { AtenderServidor(); };
-                    //atender = new Thread(ts);
-                    //atender.Start();
-
-
-                    string mensaje = "5/" + usuari.Text + "," + contra.Text + "," + repetircontra.Text;
+                    string mensaje = "5/" + usuari.Text + "/" + contra.Text + "/" + repetircontra.Text;
 
                     byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
                     server.Send(msg);
+
+                    byte[] msg2 = new byte[80];
+                    server.Receive(msg2);
+                    mensaje = Encoding.ASCII.GetString(msg2).Split('\0')[0];
+                    if (mensaje == "0")
+                        MessageBox.Show("Usuari creat correctament");
+                    else
+                        MessageBox.Show("Error creant l'usuari");
+                    Close();
                 }
 
                 catch (SocketException)
